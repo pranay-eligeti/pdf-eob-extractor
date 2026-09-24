@@ -1,0 +1,10 @@
+SYNTHETIC EOB - FOR PORTFOLIO TESTING ONLY
+Claim Number: CLM-DEMO-001
+Patient Name: Alex Example
+Service Date: 2026-08-15
+Payer: Example Health Plan
+Billed Amount: $1,250.00
+Allowed Amount: $875.00
+Paid Amount: $700.00
+Patient Responsibility: $175.00
+Adjustment Reason: CO-45
