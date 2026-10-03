@@ -50,7 +50,7 @@ Business Central mapping
 Excel export
 ~~~
 
-See docs/architecture.md for design notes.
+See [architecture notes](docs/architecture.md) for design notes.
 
 ## Repository structure
 
@@ -84,7 +84,7 @@ cd pdf-eob-extractor
 python -m venv .venv
 
 # Windows
-.venv\\Scripts\\activate
+.venv\Scripts\activate
 
 # macOS/Linux
 source .venv/bin/activate
@@ -102,9 +102,14 @@ pytest -q
 
 From Python, call src.extractor.extract_text(path_to_pdf) to obtain the PDF text, then pass the text to src.parser.parse_deterministic(...), validate it with src.validator, map it with src.mapper, and export with src.exporter.
 
+The offline integration test creates a synthetic PDF, extracts and validates its
+fields, and checks the resulting Excel workbook. Zero paid amounts are valid
+present values. The deterministic parser expects labeled text fields; scanned
+image-only PDFs require an OCR layer, which is outside this implementation.
+
 ### Optional Claude extraction
 
-Set ANTHROPIC_API_KEY in a local .env file, then call src.parser.parse_with_claude(...). The provider is optional and is not used by CI.
+Set `ANTHROPIC_API_KEY` in the process environment, then call `src.parser.parse_with_claude(text, model="YOUR_ACCESSIBLE_MODEL")`. The library does not automatically load `.env` files. The provider is optional and is not used by CI.
 
 ## Example fields
 

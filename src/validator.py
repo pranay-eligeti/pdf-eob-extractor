@@ -14,7 +14,7 @@ REQUIRED_EXTRACTION_FIELDS = [
 
 
 def missing_required_fields(record: dict[str, Any]) -> list[str]:
-    return [field for field in REQUIRED_EXTRACTION_FIELDS if not record.get(field)]
+    return [field for field in REQUIRED_EXTRACTION_FIELDS if record.get(field) is None or record.get(field) == ""]
 
 
 def validate_business_central(record: dict[str, Any]) -> list[str]:
@@ -24,4 +24,4 @@ def validate_business_central(record: dict[str, Any]) -> list[str]:
         "Account No.",
         "Amount",
     ]
-    return [field for field in required if not record.get(field)]
+    return [field for field in required if record.get(field) is None or record.get(field) == ""]
